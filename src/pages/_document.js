@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Form from "../../component/UserInputForm/UserInputForm";
 
 export default function Document() {
   return (
