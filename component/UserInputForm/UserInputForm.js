@@ -22,8 +22,6 @@ export default function UserInputForm({ onResponse }) {
 
       const responseData = await response.json();
       console.log("responseData", responseData);
-      const newMenu = JSON.parse(responseData.newMenu);
-      console.log("newMenu", newMenu);
 
       onResponse(responseData); // Pass the response data to the parent component
     } catch (error) {
