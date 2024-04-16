@@ -2,16 +2,28 @@ import generator from "../../../utils/openai";
 
 export default async function handler(request, response) {
   if (request.method === "POST") {
-    const { userInput } = request.body;
+    const {
+      userInput,
+      dietaryChoices,
+      finalDietaryRestrictions,
+      godsRestrictions,
+    } = request.body;
     console.log("User Input in API Route:", userInput);
 
     try {
-      const newMenu = await generator(userInput);
+      const newMenu = await generator(
+        userInput,
+        godsRestrictions,
+        dietaryChoices
+      );
       console.log("generated menu: ", newMenu);
       response.status(200).json({
         success: true,
         message: "Menu generated succsesfuly",
         newMenu,
+        dietaryChoices,
+        godsRestrictions,
+        finalDietaryRestrictions,
       });
     } catch (error) {
       console.error("Error generating menu:", error);

@@ -3,7 +3,12 @@ const fetch = require("node-fetch");
 const BASE_URL = "http://localhost:1234/v1";
 const API_KEY = "lm-studio";
 
-export default async function generator(formData) {
+export default async function generator(
+  userText,
+  godsRestrictions,
+  choices,
+  allergyRestrictions
+) {
   const response = await fetch(`${BASE_URL}/chat/completions`, {
     method: "POST",
     headers: {
@@ -16,7 +21,9 @@ export default async function generator(formData) {
       messages: [
         {
           role: "user",
-          content: `please create a weekly menu as a list, 3 meals a day with ${formData}`,
+          content: `please create a weekly menu as a list, 3 meals a day with ${userText} 
+          I keep ${godsRestrictions} rules and ${choices}dietary restrictions
+          I also have ${allergyRestrictions}`,
         },
       ],
       temperature: 0.7,

@@ -8,11 +8,11 @@ export default function UserInputForm({ onResponse }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const userInput = formData.get("userInput");
-    const dietaryCoices = formData.get("dietaryChoices");
+    const dietaryChoices = formData.get("dietaryChoices");
     const godsRestrictions = formData.get("godsRestrictions");
     const customDietaryRestriction = formData.get("customDietaryRestriction");
     const finalDietaryRestrictions =
-      dietaryRestrictions === "custom"
+      dietaryRestrictions === "other"
         ? customDietaryRestriction
         : dietaryRestrictions;
 
@@ -20,7 +20,7 @@ export default function UserInputForm({ onResponse }) {
     console.log("dietaryRestrictions: ", dietaryRestrictions);
     console.log("finalDietaryRestrictions: ", finalDietaryRestrictions);
     console.log("godsRestrictions: ", godsRestrictions);
-    console.log("dietaryCoices: ", dietaryCoices);
+    console.log("dietaryCoices: ", dietaryChoices);
 
     try {
       const response = await fetch("/api/generateMenu", {
@@ -31,7 +31,7 @@ export default function UserInputForm({ onResponse }) {
         body: JSON.stringify({
           userInput,
           finalDietaryRestrictions,
-          dietaryCoices,
+          dietaryChoices,
           godsRestrictions,
         }),
       });
@@ -54,8 +54,8 @@ export default function UserInputForm({ onResponse }) {
       <label htmlFor="userInput">What would you like to eat this week?</label>
       <input id="userInput" name="userInput" type="text" />
       <br />
-      <label htmlFor="dietaryCoices">dietery choices:</label>
-      <select id="dietaryCoices" name="dietaryCoices">
+      <label htmlFor="dietaryChoices">dietery choices:</label>
+      <select id="dietaryChoices" name="dietaryChoices">
         <option value="vegetarian">vegetarian</option>
         <option value="vegan">vegan</option>
         <option value="pescatarian">pescatarian</option>
@@ -63,13 +63,19 @@ export default function UserInputForm({ onResponse }) {
       </select>
       <br />
       <label htmlFor="dietaryRestrictions">dietary restrictions:</label>
-      <select id="dietaryRestrictions" name="dietaryRestrictions">
+      <select
+        id="dietaryRestrictions"
+        name="dietaryRestrictions"
+        value={dietaryRestrictions}
+        onChange={(event) => setDietaryRestrictions(event.target.value)}
+      >
         <option value="none">none</option>
         <option value="gluten-free">gluten-free</option>
         <option value="lactose-free">lactose-free</option>
         <option value="nut allergy">nut allergy</option>
         <option value="other">other</option>
       </select>
+
       {dietaryRestrictions === "other" && (
         <input
           type="text"
