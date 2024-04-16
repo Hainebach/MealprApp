@@ -1,5 +1,4 @@
 import generator from "../../../utils/openai";
-import OpenAI from "openai";
 
 export default async function handler(request, response) {
   if (request.method === "POST") {
