@@ -25,7 +25,7 @@ const ResponseDisplay = ({ response }) => {
     // Handle case when response doesn't contain menu data
     return (
       <div>
-        <h2>your menu is being prepared</h2>
+        <h3>what's it gonna be?</h3>
       </div>
     );
   }

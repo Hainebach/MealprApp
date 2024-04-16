@@ -1,11 +1,26 @@
 import React from "react";
+import { useState } from "react";
 
 export default function UserInputForm({ onResponse }) {
+  const [dietaryRestrictions, setDietaryRestrictions] = useState("none");
+
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const userInput = formData.get("userInput");
+    const dietaryCoices = formData.get("dietaryChoices");
+    const godsRestrictions = formData.get("godsRestrictions");
+    const customDietaryRestriction = formData.get("customDietaryRestriction");
+    const finalDietaryRestrictions =
+      dietaryRestrictions === "custom"
+        ? customDietaryRestriction
+        : dietaryRestrictions;
+
     console.log("user input: ", userInput);
+    console.log("dietaryRestrictions: ", dietaryRestrictions);
+    console.log("finalDietaryRestrictions: ", finalDietaryRestrictions);
+    console.log("godsRestrictions: ", godsRestrictions);
+    console.log("dietaryCoices: ", dietaryCoices);
 
     try {
       const response = await fetch("/api/generateMenu", {
@@ -13,7 +28,12 @@ export default function UserInputForm({ onResponse }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userInput }),
+        body: JSON.stringify({
+          userInput,
+          finalDietaryRestrictions,
+          dietaryCoices,
+          godsRestrictions,
+        }),
       });
 
       if (!response.ok) {
@@ -33,6 +53,39 @@ export default function UserInputForm({ onResponse }) {
     <form onSubmit={handleSubmit}>
       <label htmlFor="userInput">What would you like to eat this week?</label>
       <input id="userInput" name="userInput" type="text" />
+      <br />
+      <label htmlFor="dietaryCoices">dietery choices:</label>
+      <select id="dietaryCoices" name="dietaryCoices">
+        <option value="vegetarian">vegetarian</option>
+        <option value="vegan">vegan</option>
+        <option value="pescatarian">pescatarian</option>
+        <option value="omnivore">omnivore</option>
+      </select>
+      <br />
+      <label htmlFor="dietaryRestrictions">dietary restrictions:</label>
+      <select id="dietaryRestrictions" name="dietaryRestrictions">
+        <option value="none">none</option>
+        <option value="gluten-free">gluten-free</option>
+        <option value="lactose-free">lactose-free</option>
+        <option value="nut allergy">nut allergy</option>
+        <option value="other">other</option>
+      </select>
+      {dietaryRestrictions === "other" && (
+        <input
+          type="text"
+          name="customDietaryRestriction"
+          placeholder="enter your custom restriction"
+        />
+      )}
+      <br />
+      <label htmlFor="godsRestrictions">god's restrictions:</label>
+      <select id="godsRestrictions" name="godsRestrictions">
+        <option value="none">none</option>
+        <option value="kosher">kosher</option>
+        <option value="halal">halal</option>
+        <option value="hindu">hindu</option>
+      </select>
+
       <button type="submit">Generate</button>
     </form>
   );
