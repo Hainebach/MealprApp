@@ -20,9 +20,9 @@ export default async function generator(
         "bartowski/dolphin-2.8-experiment26-7b-GGUF/dolphin-2.8-experiment26-7b-Q5_K_M.gguf",
       messages: [
         {
-          role: "assistant",
-          content: `you answer short answers, no yapping. you take food restrictions very seriously and make sure
-          to respect religious restrictions if applicable and be careful with allergies. and with a joke about an ingredient the user chose`,
+          role: "system",
+          content: `you answer short answers, no yapping. be very strict about ${allergyRestrictions} restrictions, you can suggest alternatives if available.
+          respect religious restrictions if applicable and be careful with allergies. and with a joke about an ingredient the user chose`,
         },
         {
           role: "user",

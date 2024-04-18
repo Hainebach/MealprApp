@@ -62,6 +62,8 @@ const ResponseDisplay = ({
       </div>
     );
   } else if (scheduleData) {
+    console.log(typeof scheduleData);
+    console.log(scheduleData);
     return (
       <div>
         <h2>Schedule:</h2>

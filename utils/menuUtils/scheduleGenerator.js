@@ -14,6 +14,7 @@ export default async function scheduleGenerator(generatedMenu) {
       body: JSON.stringify({
         model:
           "bartowski/dolphin-2.8-experiment26-7b-GGUF/dolphin-2.8-experiment26-7b-Q5_K_M.gguf",
+        // "TheBloke/airoboros-l2-7b-gpt4-1.4.1-GGUF",
         messages: [
           {
             role: "user",
