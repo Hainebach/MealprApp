@@ -31,7 +31,7 @@ form input {
   margin: 1rem;
 }
 
-form button {
+button {
   background-color: palevioletred;
   border: solid papayawhip 1px;
 }

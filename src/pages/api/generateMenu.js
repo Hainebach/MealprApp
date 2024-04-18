@@ -16,7 +16,6 @@ export default async function handler(request, response) {
         godsRestrictions,
         dietaryChoices
       );
-      console.log("generated menu: ", newMenu);
       response.status(200).json({
         success: true,
         message: "Menu generated succsesfuly",
@@ -25,6 +24,7 @@ export default async function handler(request, response) {
         godsRestrictions,
         finalDietaryRestrictions,
       });
+      console.log("menu: ", newMenu);
     } catch (error) {
       console.error("Error generating menu:", error);
       response

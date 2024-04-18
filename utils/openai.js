@@ -20,13 +20,18 @@ export default async function generator(
         "bartowski/dolphin-2.8-experiment26-7b-GGUF/dolphin-2.8-experiment26-7b-Q5_K_M.gguf",
       messages: [
         {
+          role: "assistant",
+          content: `you answer short answers, no yapping. you take food restrictions very seriously and make sure
+          to respect religious restrictions if applicable and be careful with allergies. and with a joke about an ingredient the user chose`,
+        },
+        {
           role: "user",
           content: `please create a weekly menu as a list, 3 meals a day with ${userText} 
           I keep ${godsRestrictions} rules and ${choices}dietary restrictions
           I also have ${allergyRestrictions}`,
         },
       ],
-      temperature: 0.7,
+      temperature: 0.4,
       // Removed 'stream: true' to avoid streaming the response
     }),
   });
