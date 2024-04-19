@@ -24,6 +24,7 @@ export default function Home() {
         onResponse={handleResponse}
         setResponse={setResponse}
         scheduleData={scheduleData}
+        setScheduleData={setScheduleData}
       />
     </main>
   );
