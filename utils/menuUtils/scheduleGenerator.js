@@ -1,7 +1,9 @@
-const fetch = require("node-fetch");
+import OpenAI from "openai";
 
-const BASE_URL = "http://localhost:1234/v1";
-const API_KEY = "lm-studio";
+const openai = new OpenAI({
+  apiKey: process.env["OPENAI_API_KEY"],
+  baseURL: process.env["BASEURL"],
+});
 
 export default async function scheduleGenerator(generatedMenu) {
   try {
