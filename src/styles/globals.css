@@ -26,7 +26,11 @@ body {
   }
 }
 
-form input {
+form {
+  margin: 20px;
+}
+
+form textarea {
   border: solid black 1px;
   margin: 1rem;
 }

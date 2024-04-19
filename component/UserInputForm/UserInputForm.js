@@ -52,7 +52,8 @@ export default function UserInputForm({ onResponse }) {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="userInput">What would you like to eat this week?</label>
-      <input id="userInput" name="userInput" type="text" />
+      <br />
+      <textarea id="userInput" name="userInput" type="text" />
       <br />
       <label htmlFor="dietaryChoices">dietery choices:</label>
       <select id="dietaryChoices" name="dietaryChoices">
@@ -91,7 +92,7 @@ export default function UserInputForm({ onResponse }) {
         <option value="halal">halal</option>
         <option value="hindu">hindu</option>
       </select>
-
+      <br />
       <button type="submit">Generate</button>
     </form>
   );

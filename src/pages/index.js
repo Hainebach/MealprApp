@@ -1,6 +1,7 @@
 import ResponseDisplay from "../../component/ResponseDisplay/ResponseDisplay";
 import UserInputForm from "../../component/UserInputForm/UserInputForm";
 import { useState } from "react";
+require("dotenv").config();
 
 export default function Home() {
   const [response, setResponse] = useState(null);
@@ -20,7 +21,7 @@ export default function Home() {
       <UserInputForm onResponse={handleResponse} />
       <ResponseDisplay
         response={response}
-        onResponse={handleSchedule}
+        onResponse={handleResponse}
         setResponse={setResponse}
         scheduleData={scheduleData}
       />

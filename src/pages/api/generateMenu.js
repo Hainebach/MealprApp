@@ -1,4 +1,10 @@
 import generator from "../../../utils/openai";
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  apiKey: process.env["OPENAI_API_KEY"],
+  baseURL: process.env["BASEURL"],
+});
 
 export default async function handler(request, response) {
   if (request.method === "POST") {
@@ -16,15 +22,9 @@ export default async function handler(request, response) {
         godsRestrictions,
         dietaryChoices
       );
-      response.status(200).json({
-        success: true,
-        message: "Menu generated succsesfuly",
-        newMenu,
-        dietaryChoices,
-        godsRestrictions,
-        finalDietaryRestrictions,
-      });
+      response.status(200).json(newMenu);
       console.log("menu: ", newMenu);
+      console.log(typeof newMenu);
     } catch (error) {
       console.error("Error generating menu:", error);
       response

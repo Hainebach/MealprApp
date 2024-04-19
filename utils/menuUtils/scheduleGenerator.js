@@ -25,7 +25,7 @@ export default async function scheduleGenerator(generatedMenu) {
                 of ingredients as an array.`,
           },
         ],
-        temperature: 0,
+        temperature: 0.1,
         // Removed 'stream: true' to avoid streaming the response
       }),
     });
