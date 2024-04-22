@@ -13,10 +13,22 @@ export default async function scheduleGenerator(generatedMenu) {
         {
           role: "system",
           content: `Based on the menu: ${generatedMenu}, generate an array of objects representing
-          the weekly menu. Each object should contain properties for each day of the week
-           (e.g., Monday, Tuesday, etc.) with nested objects for breakfast, lunch, dinner.
-            Each meal object should have properties for the name of the dish and the list
-             of ingredients as an array.`,
+          the weekly menu. use this schema, and include all the days on the menu you recieve:
+          const weekly_menu = [
+            {day: "day's name",
+            breakfast: {
+              name: "title of the meal",
+              items: ["items for the meal"]
+            },
+           lunch: {
+              name: "title of the meal",
+              items: ["items for the meal"]
+            },
+            dinner: {
+              name: "title of the meal",
+              items: ["items for the meal"]
+            },}
+          ]. please formant the response as JSON.`,
         },
       ],
       temperature: 0.1,
