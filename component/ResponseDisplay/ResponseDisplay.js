@@ -62,29 +62,34 @@ const ResponseDisplay = ({
   } else if (scheduleData) {
     console.log(typeof scheduleData);
     console.log(scheduleData);
+    const parsedSchedule = JSON.parse(scheduleData);
+    console.log(typeof parsedSchedule);
+
     return (
-      <div>
-        <h3>{scheduleData}</h3>
-        {/* <h2>Schedule:</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>Breakfast</th>
-              <th>Lunch</th>
-              <th>Dinner</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{scheduleData.day}</td>
-              <td>{scheduleData.breakfast}</td>
-              <td>{scheduleData.lunch}</td>
-              <td>{scheduleData.dinner}</td>
-            </tr>
-          </tbody>
-        </table> */}
-      </div>
+      <h3>{scheduleData}</h3>
+      // <div>
+      //   <h2>Schedule:</h2>
+      //   <table>
+      //     <thead>
+      //       <tr>
+      //         <th>Day</th>
+      //         <th>Breakfast</th>
+      //         <th>Lunch</th>
+      //         <th>Dinner</th>
+      //       </tr>
+      //     </thead>
+      //     <tbody>
+      //       {scheduleData.map((day, index) => (
+      //         <tr key={index}>
+      //           <td>{day}</td>
+      //           <td>{day.breakfast.name}</td>
+      //           <td>{day.lunch.name}</td>
+      //           <td>{day.dinner.name}</td>
+      //         </tr>
+      //       ))}
+      //     </tbody>
+      //   </table>
+      // </div>
     );
   } else {
     // Handle case when response doesn't contain menu data

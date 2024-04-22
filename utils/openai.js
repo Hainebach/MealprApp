@@ -18,10 +18,10 @@ export default async function generator(
       messages: [
         {
           role: "system",
-          content: `you answer short answers, no yapping. be very strict about ${allergyRestrictions} 
+          content: `you answer short answers to the point, yet you give a full menu. be very strict about ${allergyRestrictions} 
           restrictions, you can suggest alternatives if available. respect religious restrictions if 
-          applicable and be careful with allergies.
-          format your answer for every day of the week like that: day: name of day breakfast: content lunch: content dinner: content
+          applicable and be careful with allergies. don't repeat any item more than two consecutive days.
+          format your answer for every day of the week like that: name of day, breakfast: content lunch: content dinner: content
           starting monday. after the list tell a joke about an ingredient the user chose`,
         },
         {

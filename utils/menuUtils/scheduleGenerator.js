@@ -1,4 +1,6 @@
 import OpenAI from "openai";
+import { weekly_menu_template } from "../../data/weekly_menu_template";
+import { schedulePrompt } from "../../data/prompts";
 
 const openai = new OpenAI({
   apiKey: process.env["OPENAI_API_KEY"],
@@ -11,24 +13,8 @@ export default async function scheduleGenerator(generatedMenu) {
       model: "gpt-3.5-turbo",
       messages: [
         {
-          role: "system",
-          content: `Based on the menu: ${generatedMenu}, generate an array of objects representing
-          the weekly menu. use this schema, and include all the days on the menu you recieve:
-          const weekly_menu = [
-            {day: "day's name",
-            breakfast: {
-              name: "title of the meal",
-              items: ["items for the meal"]
-            },
-           lunch: {
-              name: "title of the meal",
-              items: ["items for the meal"]
-            },
-            dinner: {
-              name: "title of the meal",
-              items: ["items for the meal"]
-            },}
-          ]. please formant the response as JSON.`,
+          role: "assistant",
+          content: `based on ${generatedMenu}, ${schedulePrompt}`,
         },
       ],
       temperature: 0.1,
