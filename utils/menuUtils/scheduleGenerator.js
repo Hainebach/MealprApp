@@ -32,36 +32,3 @@ export default async function scheduleGenerator(generatedMenu) {
     console.error("error generating menu: ", error);
   }
 }
-
-//     const response = await openai.chat.completions.create({
-//       method: "POST",
-//       model: "gpt-3.5-turbo",
-//       messages: [
-//         {
-//           role: "user",
-//           content: `Based on the menu: ${generatedMenu}, generate an array of objects representing
-//              the weekly menu. Each object should contain properties for each day of the week
-//               (e.g., Monday, Tuesday, etc.) with nested objects for breakfast, lunch, dinner.
-//                Each meal object should have properties for the name of the dish and the list
-//                 of ingredients as an array.`,
-//         },
-//       ],
-//       temperature: 0.1,
-//       // Removed 'stream: true' to avoid streaming the response
-//     });
-
-//     if (!response.ok) {
-//       throw new Error(
-//         "*******Failed to fetch response from OPEN AI API********"
-//       );
-//     }
-
-//     const processedData = await response.json();
-//     console.log("complete JSON response: ", processedData);
-
-//     return processedData;
-//   } catch (error) {
-//     console.error("^^^^^^^Error processing menu data^^^^^^^^: ", error);
-//     throw error;
-//   }
-// }
