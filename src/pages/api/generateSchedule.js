@@ -8,11 +8,11 @@ const openai = new OpenAI({
 
 export default async function handler(request, response) {
   if (request.method === "POST") {
-    const { generatedMenu } = request.body;
-    console.log("menu in API route: ", generatedMenu);
+    const { newGeneratedMenu } = request.body;
+    console.log("menu in API route: ", newGeneratedMenu);
 
     try {
-      const scheduleData = await scheduleGenerator(generatedMenu);
+      const scheduleData = await scheduleGenerator(newGeneratedMenu);
       console.log("newSchedule: ", scheduleData);
       // const scheduleData = newSchedule.choices[0].message.content;
 
