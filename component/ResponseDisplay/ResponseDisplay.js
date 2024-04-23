@@ -66,30 +66,34 @@ const ResponseDisplay = ({
     console.log(typeof parsedSchedule);
 
     return (
-      <h3>{scheduleData}</h3>
-      // <div>
-      //   <h2>Schedule:</h2>
-      //   <table>
-      //     <thead>
-      //       <tr>
-      //         <th>Day</th>
-      //         <th>Breakfast</th>
-      //         <th>Lunch</th>
-      //         <th>Dinner</th>
-      //       </tr>
-      //     </thead>
-      //     <tbody>
-      //       {scheduleData.map((day, index) => (
-      //         <tr key={index}>
-      //           <td>{day}</td>
-      //           <td>{day.breakfast.name}</td>
-      //           <td>{day.lunch.name}</td>
-      //           <td>{day.dinner.name}</td>
-      //         </tr>
-      //       ))}
-      //     </tbody>
-      //   </table>
-      // </div>
+      // <h3>{scheduleData}</h3>
+      <div>
+        <h2>Schedule:</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Breakfast</th>
+              <th>Lunch</th>
+              <th>Dinner</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(parsedSchedule).map((day) => {
+              const { breakfast, lunch, dinner } = parsedSchedule[day];
+              return (
+                <tr key={day}>
+                  <td>{day}</td>
+                  <td>{breakfast.title}</td>
+                  <td>{lunch.title}</td>
+                  <td>{dinner.title}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     );
   } else {
     // Handle case when response doesn't contain menu data

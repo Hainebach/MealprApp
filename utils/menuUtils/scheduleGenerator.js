@@ -4,7 +4,7 @@ import { schedulePrompt } from "../../data/prompts";
 
 const openai = new OpenAI({
   apiKey: process.env["OPENAI_API_KEY"],
-  baseURL: process.env["BASEURL"],
+  // baseURL: process.env["BASEURL"],
 });
 
 export default async function scheduleGenerator(generatedMenu) {

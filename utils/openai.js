@@ -2,7 +2,7 @@ import OpenAI from "openai";
 
 const openai = new OpenAI({
   apiKey: process.env["OPENAI_API_KEY"],
-  baseURL: process.env["BASEURL"],
+  // baseURL: process.env["BASEURL"],
 });
 
 export default async function generator(
@@ -17,12 +17,12 @@ export default async function generator(
       model: "gpt-3.5-turbo",
       messages: [
         {
-          role: "system",
+          role: "assistant",
           content: `you answer short answers to the point, yet you give a full menu. be very strict about ${allergyRestrictions} 
           restrictions, you can suggest alternatives if available. respect religious restrictions if 
-          applicable and be careful with allergies. don't repeat any item more than two consecutive days.
-          format your answer for every day of the week like that: name of day, breakfast: content lunch: content dinner: content
-          starting monday. after the list tell a joke about an ingredient the user chose`,
+          applicable and be strict about dietary coices: $}. don't repeat any item more than two consecutive days.
+          format your answer for every day of the week like that: breakfast: content, lunch: content, dinner: content
+          starting monday. after the list tell a joke about the users ${choices}`,
         },
         {
           role: "user",
@@ -31,7 +31,7 @@ export default async function generator(
            I also have ${allergyRestrictions}`,
         },
       ],
-      temperature: 0.4,
+      temperature: 0.6,
     });
     if (response && response.choices && response.choices.length > 0) {
       const jsonResponse = response.choices[0].message.content;
