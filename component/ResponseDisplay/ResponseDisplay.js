@@ -36,10 +36,10 @@ const ResponseDisplay = ({
           console.log(typeof response);
           throw new Error("Failed to generate new schedule");
         }
-        const responseData = await response.json();
-        console.log("responseData generated schedule", responseData);
-        setScheduleData(responseData);
-        onResponse(responseData);
+        // const responseData = await response;
+        console.log("responseData generated schedule", response);
+        setScheduleData(response);
+        onResponse(response);
         setResponse(null);
       } catch (error) {
         console.error("error: ", error);
@@ -62,38 +62,38 @@ const ResponseDisplay = ({
   } else if (scheduleData) {
     console.log(typeof scheduleData);
     console.log(scheduleData);
-    const parsedSchedule = JSON.parse(scheduleData);
-    console.log(typeof parsedSchedule);
+    // const parsedSchedule = JSON.parse(scheduleData);
+    // console.log(typeof parsedSchedule);
 
     return (
-      // <h3>{scheduleData}</h3>
-      <div>
-        <h2>Schedule:</h2>
+      <h3>{scheduleData}</h3>
+      //   <div>
+      //     <h2>Schedule:</h2>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>Breakfast</th>
-              <th>Lunch</th>
-              <th>Dinner</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.keys(parsedSchedule).map((day) => {
-              const { breakfast, lunch, dinner } = parsedSchedule[day];
-              return (
-                <tr key={day}>
-                  <td>{day}</td>
-                  <td>{breakfast.title}</td>
-                  <td>{lunch.title}</td>
-                  <td>{dinner.title}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+      //     <table>
+      //       <thead>
+      //         <tr>
+      //           <th>Day</th>
+      //           <th>Breakfast</th>
+      //           <th>Lunch</th>
+      //           <th>Dinner</th>
+      //         </tr>
+      //       </thead>
+      //       <tbody>
+      //         {Object.keys(scheduleData).map((day) => {
+      //           const { breakfast, lunch, dinner } = scheduleData[day];
+      //           return (
+      //             <tr key={day}>
+      //               <td>{day}</td>
+      //               <td>{breakfast.title}</td>
+      //               <td>{lunch.title}</td>
+      //               <td>{dinner.title}</td>
+      //             </tr>
+      //           );
+      //         })}
+      //       </tbody>
+      //     </table>
+      //   </div>
     );
   } else {
     // Handle case when response doesn't contain menu data

@@ -1,6 +1,8 @@
 import OpenAI from "openai";
 import { weekly_menu_template } from "../../data/weekly_menu_template";
 import { schedulePrompt } from "../../data/prompts";
+import { tools } from "../../data/tools/scheduleTools";
+require("dotenv").config();
 
 const openai = new OpenAI({
   apiKey: process.env["OPENAI_API_KEY"],
@@ -13,18 +15,22 @@ export default async function scheduleGenerator(generatedMenu) {
       model: "gpt-3.5-turbo",
       messages: [
         {
-          role: "assistant",
+          role: "user",
           content: `based on ${generatedMenu}, ${schedulePrompt}`,
         },
       ],
+      tools: tools,
+      tool_choice: "auto",
       temperature: 0.1,
     });
     if (response && response.choices && response.choices.length > 0) {
-      const jsonResponse = response.choices[0].message.content;
+      const jsonResponse =
+        response.choices[0].message.tool_calls[0].function.arguments;
       console.log("$$$$$$$$$$$$$$$$Complete JSON Response:", jsonResponse);
       console.log(typeof jsonResponse);
+      const parsedJsonResponse = JSON.parse(jsonResponse);
 
-      return jsonResponse;
+      return parsedJsonResponse;
     } else {
       throw new Error("Failed to fetch response from OpenAI API");
     }
