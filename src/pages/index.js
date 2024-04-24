@@ -1,3 +1,4 @@
+import Layout from "../../component/Layout/Layout";
 import ResponseDisplay from "../../component/ResponseDisplay/ResponseDisplay";
 import UserInputForm from "../../component/UserInputForm/UserInputForm";
 import { useState } from "react";
@@ -16,7 +17,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <Layout>
       <h1>welcome to MealprApp</h1>
       <UserInputForm onResponse={handleResponse} />
       <ResponseDisplay
@@ -26,6 +27,6 @@ export default function Home() {
         scheduleData={scheduleData}
         setScheduleData={setScheduleData}
       />
-    </main>
+    </Layout>
   );
 }
