@@ -39,3 +39,13 @@ button {
   background-color: palevioletred;
   border: solid papayawhip 1px;
 }
+
+.header {
+  background-color: palevioletred;
+  text-align: center;
+}
+
+.navbar {
+  background-color: palevioletred;
+  text-align: center;
+}

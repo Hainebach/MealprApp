@@ -1,5 +1,4 @@
 import OpenAI from "openai";
-import { weekly_menu_template } from "../../data/weekly_menu_template";
 import { schedulePrompt } from "../../data/prompts";
 
 const openai = new OpenAI({

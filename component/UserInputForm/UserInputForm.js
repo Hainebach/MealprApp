@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
+// import { handleResponse } from "../../utils/dataHandlers/dataHandlers";
 
-export default function UserInputForm({ onResponse }) {
+export default function UserInputForm({ onNewGeneratedMenu }) {
   const [dietaryRestrictions, setDietaryRestrictions] = useState("none");
 
   async function handleSubmit(event) {
@@ -43,7 +44,7 @@ export default function UserInputForm({ onResponse }) {
       const responseData = await response.json();
       console.log("responseData", responseData);
 
-      onResponse(responseData);
+      onNewGeneratedMenu(responseData);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -85,7 +86,7 @@ export default function UserInputForm({ onResponse }) {
         />
       )}
       <br />
-      <label htmlFor="godsRestrictions">god's restrictions:</label>
+      <label htmlFor="godsRestrictions">god&apos;s restrictions:</label>
       <select id="godsRestrictions" name="godsRestrictions">
         <option value="none">none</option>
         <option value="kosher">kosher</option>

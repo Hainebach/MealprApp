@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 const ResponseDisplay = ({
-  response,
-  onResponse,
-  scheduleData,
-  setScheduleData,
-  setResponse,
+  menuData,
+  newGeneratedMenu,
+  setNewGeneratedMenu,
 }) => {
   const [error, setError] = useState("");
   const [parsedSchedule, setParsedSchedule] = useState(null);
-  const [newGeneratedMenu, setNewGeneratedMenu] = useState();
+  // const [newGeneratedMenu, setNewGeneratedMenu] = useState();
 
   async function handleButtonClick(event) {
     event.preventDefault();
@@ -44,9 +42,8 @@ const ResponseDisplay = ({
   }
 
   useEffect(() => {
-    const generatedMenu = response;
-    setNewGeneratedMenu(generatedMenu?.split("\n"));
-  }, [response]);
+    setNewGeneratedMenu(menuData?.split("\n"));
+  }, [menuData]);
 
   return (
     <>
@@ -104,61 +101,5 @@ const ResponseDisplay = ({
     </>
   );
 };
-
-// } else {
-//   // Handle case when response doesn't contain menu data
-//   return (
-//     <div>
-//       <h3>what's it gonna be?</h3>
-//     </div>
-//   );
-// }
-
-//   } else if (scheduleData) {
-//     console.log(typeof scheduleData);
-
-//     try {
-//       const parsedSchedule = JSON.parse(scheduleData);
-//       // console.log("array? ", Array.isArray(parsedSchedule));
-//       setScheduleData(parsedSchedule);
-
-//       return (
-//         // <>
-//         //   <h3>{scheduleData}</h3>
-//         // </>
-//         <div>
-//           {error && <p>{error}</p>}
-//           <h2>Schedule:</h2>
-
-//           <table>
-//             <thead>
-//               <tr>
-//                 <th>Day</th>
-//                 <th>Breakfast</th>
-//                 <th>Lunch</th>
-//                 <th>Dinner</th>
-//               </tr>
-//             </thead>
-//             <tbody>
-//               {scheduleData.map((day) => {
-//                 const { breakfast, lunch, dinner } = scheduleData[day];
-//                 return (
-//                   <tr key={day}>
-//                     <td>{day}</td>
-//                     <td>{breakfast.title}</td>
-//                     <td>{lunch.title}</td>
-//                     <td>{dinner.title}</td>
-//                   </tr>
-//                 );
-//               })}
-//             </tbody>
-//           </table>
-//         </div>
-//       );
-//     } catch (error) {
-//       setError("not a valid json");
-//       console.error("not a valid json");
-//     }
-// };
 
 export default ResponseDisplay;
