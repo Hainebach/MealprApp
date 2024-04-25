@@ -14,7 +14,8 @@ export default async function handler(request, response) {
       const newMenu = await generator(
         userInput,
         godsRestrictions,
-        dietaryChoices
+        dietaryChoices,
+        finalDietaryRestrictions
       );
       response.status(200).json(newMenu);
       console.log("menu: ", newMenu);

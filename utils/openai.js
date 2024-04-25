@@ -9,6 +9,7 @@ export default async function generator(
   userText,
   godsRestrictions,
   choices,
+  finalDietaryRestrictions,
   allergyRestrictions
 ) {
   console.log("--------------generating response-----------------");
@@ -21,7 +22,8 @@ export default async function generator(
           role: "assistant",
           content: `you answer short answers to the point, yet you give a full menu. be very strict about ${allergyRestrictions} 
           restrictions, you can suggest alternatives if available. respect religious restrictions if 
-          applicable and be strict about dietary coices: $}. don't repeat any item more than two consecutive days.
+          applicable and be strict about dietary ${choices} and ${finalDietaryRestrictions} if there are any. 
+          don't repeat any item more than two consecutive days.
           format your answer for every day of the week like that: breakfast: content, lunch: content, dinner: content
           starting monday. after the list tell a joke about the users ${choices}`,
         },
