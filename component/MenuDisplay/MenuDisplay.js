@@ -5,7 +5,12 @@ export default function MenuDisplay({
   handleButtonClick,
   onEditClick,
 }) {
-  if (!menuData || !Array.isArray(menuData)) return <p>No menu to display.</p>;
+  if (!menuData || !Array.isArray(menuData)) {
+    console.log("no available menu to display: ", menuData);
+    console.log(typeof menuData);
+    return;
+    <p>No menu to display.</p>;
+  }
 
   return (
     <div>

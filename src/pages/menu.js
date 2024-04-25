@@ -45,15 +45,17 @@ export default function MenuPage() {
     setEditedMenu(menuData);
   };
 
-  const handleMenuEdit = (event) => {
-    setEditedMenu(event.target.value);
-    console.log("edited menuData: ", editedMenu);
-  };
+  const handleMenuEditSubmit = () => {
+    const menuItems = editedMenu
+      .split("\n") // Assuming each item is on a new line; adjust as necessary
+      .map((item) => item.trim())
+      .filter((item) => item !== "");
 
-  //   const submitEditedMenu = () => {
-  //     setMenuData(editedMenu);
-  //     console.log("edited menuData: ", menuData);
-  //   };
+    console.log("Converting edited menu to array:", menuItems);
+    setMenuData(menuItems);
+    console.log("Updated menuData in store.");
+    handleButtonClick();
+  };
 
   return (
     <Layout>
@@ -75,15 +77,11 @@ export default function MenuPage() {
         </div>
       ) : editMode ? (
         <div>
-          <textarea value={editedMenu} onChange={handleMenuEdit} />
-          <button
-            onClick={() => {
-              setMenuData(editedMenu);
-              handleButtonClick();
-            }}
-          >
-            Submit Edited Menu
-          </button>
+          <textarea
+            value={editedMenu}
+            onChange={(e) => setEditedMenu(e.target.value)}
+          />
+          <button onClick={handleMenuEditSubmit}>Submit Edited Menu</button>
           <button onClick={toggleEditMode}>Cancel</button>
         </div>
       ) : (
