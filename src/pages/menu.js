@@ -2,14 +2,16 @@ import { useRouter } from "next/router";
 import Layout from "../../component/Layout/Layout";
 import MenuDisplay from "../../component/MenuDisplay/MenuDisplay";
 import useMenuScheduleStore from "../../store/useMenuScheduleStore";
-import { useEffect } from "react";
+import React, { useState } from "react";
 
 export default function MenuPage() {
   const router = useRouter();
   const { menuData, setScheduleData } = useMenuScheduleStore();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleButtonClick = async () => {
     console.log("I like this menu clicked");
+    setIsLoading(true);
 
     try {
       const response = await fetch("/api/generateSchedule", {
@@ -26,18 +28,35 @@ export default function MenuPage() {
       router.push("/schedule");
     } catch (error) {
       console.error("Error generating schedule:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
-  //   useEffect(() => {
-  //     if (!menuData) {
-  //       router.push("/create-menu");
-  //     }
-  //   }, [menuData, router]);
-  //   console.log("menuData: ", menuData);
 
   return (
     <Layout>
-      <MenuDisplay menuData={menuData} handleButtonClick={handleButtonClick} />
+      {isLoading ? (
+        <div
+          className="gif-container"
+          style={{
+            width: "100%",
+            height: "0",
+            paddingBottom: "56%",
+            position: "relative",
+          }}
+        >
+          <iframe
+            src="https://giphy.com/embed/LMtqBDUJAzyYjUTaRP"
+            style={{ width: "100%", height: "100%", position: "absolute" }}
+            allowFullScreen
+          ></iframe>
+        </div>
+      ) : (
+        <MenuDisplay
+          menuData={menuData}
+          handleButtonClick={handleButtonClick}
+        />
+      )}
     </Layout>
   );
 }

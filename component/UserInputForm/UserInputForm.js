@@ -1,11 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function UserInputForm({ onMenuData }) {
   const [dietaryRestrictions, setDietaryRestrictions] = useState("none");
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setIsLoading(true);
     const formData = new FormData(event.target);
     const userInput = formData.get("userInput");
     const dietaryChoices = formData.get("dietaryChoices");
@@ -52,54 +53,78 @@ export default function UserInputForm({ onMenuData }) {
       }
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="userInput">What would you like to eat this week?</label>
-      <br />
-      <textarea id="userInput" name="userInput" type="text" />
-      <br />
-      <label htmlFor="dietaryChoices">dietery choices:</label>
-      <select id="dietaryChoices" name="dietaryChoices">
-        <option value="vegetarian">vegetarian</option>
-        <option value="vegan">vegan</option>
-        <option value="pescatarian">pescatarian</option>
-        <option value="omnivore">omnivore</option>
-      </select>
-      <br />
-      <label htmlFor="dietaryRestrictions">dietary restrictions:</label>
-      <select
-        id="dietaryRestrictions"
-        name="dietaryRestrictions"
-        value={dietaryRestrictions}
-        onChange={(event) => setDietaryRestrictions(event.target.value)}
-      >
-        <option value="none">none</option>
-        <option value="gluten-free">gluten-free</option>
-        <option value="lactose-free">lactose-free</option>
-        <option value="nut allergy">nut allergy</option>
-        <option value="other">other</option>
-      </select>
+      {isLoading ? (
+        <div
+          className="gif-container"
+          style={{
+            width: "100%",
+            height: "0",
+            paddingBottom: "56%",
+            position: "relative",
+          }}
+        >
+          <iframe
+            src="https://giphy.com/embed/9MIlfNXYBFC25L7QKT"
+            style={{ width: "100%", height: "100%", position: "absolute" }}
+            allowFullScreen
+          ></iframe>
+        </div>
+      ) : (
+        <>
+          <label htmlFor="userInput">
+            What would you like to eat this week?
+          </label>
+          <br />
+          <textarea id="userInput" name="userInput" type="text" />
+          <br />
+          <label htmlFor="dietaryChoices">dietery choices:</label>
+          <select id="dietaryChoices" name="dietaryChoices">
+            <option value="vegetarian">vegetarian</option>
+            <option value="vegan">vegan</option>
+            <option value="pescatarian">pescatarian</option>
+            <option value="omnivore">omnivore</option>
+          </select>
+          <br />
+          <label htmlFor="dietaryRestrictions">dietary restrictions:</label>
+          <select
+            id="dietaryRestrictions"
+            name="dietaryRestrictions"
+            value={dietaryRestrictions}
+            onChange={(event) => setDietaryRestrictions(event.target.value)}
+          >
+            <option value="none">none</option>
+            <option value="gluten-free">gluten-free</option>
+            <option value="lactose-free">lactose-free</option>
+            <option value="nut allergy">nut allergy</option>
+            <option value="other">other</option>
+          </select>
 
-      {dietaryRestrictions === "other" && (
-        <input
-          type="text"
-          name="customDietaryRestriction"
-          placeholder="enter your custom restriction"
-        />
+          {dietaryRestrictions === "other" && (
+            <input
+              type="text"
+              name="customDietaryRestriction"
+              placeholder="enter your custom restriction"
+            />
+          )}
+          <br />
+          <label htmlFor="godsRestrictions">god's restrictions:</label>
+          <select id="godsRestrictions" name="godsRestrictions">
+            <option value="none">none</option>
+            <option value="kosher">kosher</option>
+            <option value="halal">halal</option>
+            <option value="hindu">hindu</option>
+          </select>
+          <br />
+          <button type="submit">Generate</button>
+        </>
       )}
-      <br />
-      <label htmlFor="godsRestrictions">god's restrictions:</label>
-      <select id="godsRestrictions" name="godsRestrictions">
-        <option value="none">none</option>
-        <option value="kosher">kosher</option>
-        <option value="halal">halal</option>
-        <option value="hindu">hindu</option>
-      </select>
-      <br />
-      <button type="submit">Generate</button>
     </form>
   );
 }

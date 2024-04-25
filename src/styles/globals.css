@@ -49,3 +49,16 @@ button {
   background-color: palevioletred;
   text-align: center;
 }
+
+.gifContainer {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56%;
+  position: relative;
+}
+
+.fullSizeAbsolute {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
