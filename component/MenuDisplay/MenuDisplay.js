@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function MenuDisplay({ menuData, handleButtonClick }) {
+export default function MenuDisplay({
+  menuData,
+  handleButtonClick,
+  onEditClick,
+}) {
   if (!menuData || !Array.isArray(menuData)) return <p>No menu to display.</p>;
 
   return (
@@ -12,6 +16,7 @@ export default function MenuDisplay({ menuData, handleButtonClick }) {
         ))}
       </ul>
       <button onClick={handleButtonClick}>I like this menu</button>
+      <button onClick={onEditClick}>I like this but...</button>
     </div>
   );
 }
