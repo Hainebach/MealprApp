@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import useMenuScheduleStore from "../../store/useMenuScheduleStore";
 
-export default function Navbar({ menuData, scheduleData }) {
+export default function Navbar() {
+  const { menuData, scheduleData } = useMenuScheduleStore();
   return (
     <nav className="navbar">
       <ul>

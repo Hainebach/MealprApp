@@ -28,12 +28,12 @@ export default function MenuPage() {
       console.error("Error generating schedule:", error);
     }
   };
-  useEffect(() => {
-    if (!menuData) {
-      router.push("/create-menu");
-    }
-  }, [menuData, router]);
-  console.log("menuData: ", menuData);
+  //   useEffect(() => {
+  //     if (!menuData) {
+  //       router.push("/create-menu");
+  //     }
+  //   }, [menuData, router]);
+  //   console.log("menuData: ", menuData);
 
   return (
     <Layout>
