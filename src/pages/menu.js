@@ -26,7 +26,7 @@ export default function MenuPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ menuData: editedMenu }),
+        body: JSON.stringify({ newGeneratedMenu: editedMenu }),
       });
       const responseData = await response.json();
       console.log("Schedule generated:", responseData);
