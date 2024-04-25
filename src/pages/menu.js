@@ -10,6 +10,7 @@ export default function MenuPage() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleButtonClick = async () => {
+    console.log("first menuData with laya: ", menuData);
     console.log("I like this menu clicked");
     setIsLoading(true);
 
