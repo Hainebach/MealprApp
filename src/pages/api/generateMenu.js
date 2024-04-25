@@ -1,10 +1,4 @@
 import generator from "../../../utils/openai";
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: process.env["OPENAI_API_KEY"],
-  // baseURL: process.env["BASEURL"],
-});
 
 export default async function handler(request, response) {
   if (request.method === "POST") {

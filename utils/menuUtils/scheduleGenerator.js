@@ -20,7 +20,7 @@ export default async function scheduleGenerator(generatedMenu) {
       temperature: 0.1,
     });
     if (response && response.choices && response.choices.length > 0) {
-      const jsonResponse = response.choices[0].message.content;
+      const jsonResponse = JSON.parse(response.choices[0].message.content);
       console.log("$$$$$$$$$$$$$$$$Complete JSON Response:", jsonResponse);
       console.log(typeof jsonResponse);
 

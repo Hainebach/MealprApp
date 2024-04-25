@@ -43,7 +43,13 @@ export default function UserInputForm({ onMenuData }) {
       const responseData = await response.json();
       console.log("responseData", responseData);
 
-      onMenuData(responseData);
+      // onMenuData(responseData);
+      if (typeof onMenuData === "function") {
+        onMenuData(responseData);
+        console.log("onMenuData is: ", onMenuData);
+      } else {
+        console.error("onMenuData is not a function");
+      }
     } catch (error) {
       console.error("Error:", error);
     }

@@ -1,13 +1,15 @@
+import ScheduleDisplay from "../../component/ScheduleDisplay/ScheduleDisplay";
+import useMenuScheduleStore from "../../store/useMenuScheduleStore";
 import Layout from "../../component/Layout/Layout";
-import ResponseDisplay from "../../component/ResponseDisplay/ResponseDisplay";
+import { useState } from "react";
 
-import React from "react";
+export default function SchedulePage() {
+  const { scheduleData } = useMenuScheduleStore();
+  const [error, setError] = useState("");
 
-export default function schedule() {
   return (
     <Layout>
-      <h1>Generated Schedule</h1>
-      <ResponseDisplay />
+      <ScheduleDisplay scheduleData={scheduleData} error={error} />
     </Layout>
   );
 }

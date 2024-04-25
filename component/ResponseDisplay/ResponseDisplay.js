@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ResponseDisplay = ({
-  menuData,
-  onMenuData,
-  scheduleData,
-  setScheduleData,
-  setResponse,
-}) => {
+const ResponseDisplay = ({ menuData }) => {
   const [error, setError] = useState("");
   const [parsedSchedule, setParsedSchedule] = useState(null);
   const [newGeneratedMenu, setNewGeneratedMenu] = useState();

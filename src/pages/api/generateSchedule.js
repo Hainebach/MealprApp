@@ -14,7 +14,6 @@ export default async function handler(request, response) {
     try {
       const scheduleData = await scheduleGenerator(newGeneratedMenu);
       console.log("newSchedule: ", scheduleData);
-      // const scheduleData = newSchedule.choices[0].message.content;
 
       response.status(200).json(scheduleData);
       console.log("<<<<<<<<<<<<<<<<<<<<<<< new Schedule: ", scheduleData);
