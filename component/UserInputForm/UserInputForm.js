@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function UserInputForm({ onResponse }) {
+export default function UserInputForm({ onMenuData }) {
   const [dietaryRestrictions, setDietaryRestrictions] = useState("none");
 
   async function handleSubmit(event) {
@@ -43,7 +43,7 @@ export default function UserInputForm({ onResponse }) {
       const responseData = await response.json();
       console.log("responseData", responseData);
 
-      onResponse(responseData);
+      onMenuData(responseData);
     } catch (error) {
       console.error("Error:", error);
     }

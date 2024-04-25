@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 const ResponseDisplay = ({
-  response,
-  onResponse,
+  menuData,
+  onMenuData,
   scheduleData,
   setScheduleData,
   setResponse,
@@ -44,9 +44,9 @@ const ResponseDisplay = ({
   }
 
   useEffect(() => {
-    const generatedMenu = response;
+    const generatedMenu = menuData;
     setNewGeneratedMenu(generatedMenu?.split("\n"));
-  }, [response]);
+  }, [menuData]);
 
   return (
     <>

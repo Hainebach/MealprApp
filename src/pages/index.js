@@ -5,11 +5,11 @@ import { useState } from "react";
 require("dotenv").config();
 
 export default function Home() {
-  const [response, setResponse] = useState(null);
+  const [menuData, setMenuData] = useState(null);
   const [scheduleData, setScheduleData] = useState(null);
 
-  const handleResponse = (responseData) => {
-    setResponse(responseData);
+  const handleMenuData = (menuData) => {
+    setMenuData(menuData);
   };
 
   const handleSchedule = (scheduleData) => {
@@ -19,11 +19,11 @@ export default function Home() {
   return (
     <Layout>
       <h1>welcome to MealprApp</h1>
-      <UserInputForm onResponse={handleResponse} />
+      <UserInputForm onMenuData={handleMenuData} />
       <ResponseDisplay
-        response={response}
-        onResponse={handleResponse}
-        setResponse={setResponse}
+        menuData={menuData}
+        onMenuData={handleMenuData}
+        setMenuData={setMenuData}
         scheduleData={scheduleData}
         setScheduleData={setScheduleData}
       />
