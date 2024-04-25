@@ -1,45 +1,34 @@
-const fetch = require("node-fetch");
+import OpenAI from "openai";
+import { weekly_menu_template } from "../../data/weekly_menu_template";
+import { schedulePrompt } from "../../data/prompts";
 
-const BASE_URL = "http://localhost:1234/v1";
-const API_KEY = "lm-studio";
+const openai = new OpenAI({
+  apiKey: process.env["OPENAI_API_KEY"],
+  // baseURL: process.env["BASEURL"],
+});
 
 export default async function scheduleGenerator(generatedMenu) {
   try {
-    const response = await fetch(`${BASE_URL}/chat/completions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
-      },
-      body: JSON.stringify({
-        model:
-          "bartowski/dolphin-2.8-experiment26-7b-GGUF/dolphin-2.8-experiment26-7b-Q5_K_M.gguf",
-        // "TheBloke/airoboros-l2-7b-gpt4-1.4.1-GGUF",
-        messages: [
-          {
-            role: "user",
-            content: `Based on the menu: ${generatedMenu}, generate an array of objects representing
-             the weekly menu. Each object should contain properties for each day of the week
-              (e.g., Monday, Tuesday, etc.) with nested objects for breakfast, lunch, dinner.
-               Each meal object should have properties for the name of the dish and the list
-                of ingredients as an array.`,
-          },
-        ],
-        temperature: 0,
-        // Removed 'stream: true' to avoid streaming the response
-      }),
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "assistant",
+          content: `based on ${generatedMenu}, ${schedulePrompt}`,
+        },
+      ],
+      temperature: 0.1,
     });
+    if (response && response.choices && response.choices.length > 0) {
+      const jsonResponse = JSON.parse(response.choices[0].message.content);
+      console.log("$$$$$$$$$$$$$$$$Complete JSON Response:", jsonResponse);
+      console.log(typeof jsonResponse);
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch response from OPEN AI API");
+      return jsonResponse;
+    } else {
+      throw new Error("Failed to fetch response from OpenAI API");
     }
-
-    const processedData = await response.json();
-    console.log("complete JSON response: ", processedData);
-
-    return processedData;
   } catch (error) {
-    console.error("Error processing menu data:", error);
-    throw error;
+    console.error("error generating menu: ", error);
   }
 }

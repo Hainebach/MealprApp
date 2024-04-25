@@ -14,17 +14,12 @@ export default async function handler(request, response) {
       const newMenu = await generator(
         userInput,
         godsRestrictions,
-        dietaryChoices
-      );
-      response.status(200).json({
-        success: true,
-        message: "Menu generated succsesfuly",
-        newMenu,
         dietaryChoices,
-        godsRestrictions,
-        finalDietaryRestrictions,
-      });
+        finalDietaryRestrictions
+      );
+      response.status(200).json(newMenu);
       console.log("menu: ", newMenu);
+      console.log(typeof newMenu);
     } catch (error) {
       console.error("Error generating menu:", error);
       response

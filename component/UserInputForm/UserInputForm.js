@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function UserInputForm({ onResponse }) {
+export default function UserInputForm({ onMenuData }) {
   const [dietaryRestrictions, setDietaryRestrictions] = useState("none");
 
   async function handleSubmit(event) {
@@ -43,7 +43,13 @@ export default function UserInputForm({ onResponse }) {
       const responseData = await response.json();
       console.log("responseData", responseData);
 
-      onResponse(responseData);
+      // onMenuData(responseData);
+      if (typeof onMenuData === "function") {
+        onMenuData(responseData);
+        console.log("onMenuData is: ", onMenuData);
+      } else {
+        console.error("onMenuData is not a function");
+      }
     } catch (error) {
       console.error("Error:", error);
     }
@@ -52,7 +58,8 @@ export default function UserInputForm({ onResponse }) {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="userInput">What would you like to eat this week?</label>
-      <input id="userInput" name="userInput" type="text" />
+      <br />
+      <textarea id="userInput" name="userInput" type="text" />
       <br />
       <label htmlFor="dietaryChoices">dietery choices:</label>
       <select id="dietaryChoices" name="dietaryChoices">
@@ -91,7 +98,7 @@ export default function UserInputForm({ onResponse }) {
         <option value="halal">halal</option>
         <option value="hindu">hindu</option>
       </select>
-
+      <br />
       <button type="submit">Generate</button>
     </form>
   );
