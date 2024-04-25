@@ -16,8 +16,9 @@ export default function CreateMenuPage() {
         .split("\n")
         .map((item) => item.trim())
         .filter((item) => item !== "");
-      setMenuData(menuItems);
       console.log("Converted menuData to array:", menuItems);
+      setMenuData(menuItems);
+      console.log("triggered setMenuData to menuItems:", setMenuData);
       router.push("/menu");
     } catch (error) {
       console.error("Error handling menu data:", error);

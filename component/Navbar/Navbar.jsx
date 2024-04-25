@@ -16,6 +16,7 @@ export default function Navbar() {
         {menuData && (
           <li>
             <Link href="/menu">Menu</Link>
+            {console.log("menu navbar clicked: ", menuData)}
           </li>
         )}
         {scheduleData && (

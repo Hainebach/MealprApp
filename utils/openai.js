@@ -22,7 +22,8 @@ export default async function generator(
           role: "assistant",
           content: `you answer short answers to the point, yet you give a full menu. be very strict about ${allergyRestrictions} 
           restrictions, you can suggest alternatives if available. respect religious restrictions if 
-          applicable and be strict about dietary ${choices} and ${finalDietaryRestrictions} if there are any. 
+          applicable and be strict about dietary ${choices} and ${finalDietaryRestrictions} if there are any.
+          if a user asks something you think contradicts the restrictions find an alternative that might satisfy them. 
           don't repeat any item more than two consecutive days.
           format your answer for every day of the week like that: breakfast: content, lunch: content, dinner: content
           starting monday. after the list tell a joke about the users ${choices}`,
@@ -34,7 +35,7 @@ export default async function generator(
            I also have ${allergyRestrictions}`,
         },
       ],
-      temperature: 0.6,
+      temperature: 0.8,
     });
     if (response && response.choices && response.choices.length > 0) {
       const jsonResponse = response.choices[0].message.content;
