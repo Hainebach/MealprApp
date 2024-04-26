@@ -1,12 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import useMenuScheduleStore from "../../store/useMenuScheduleStore";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import styles from "../../src/styles/Navbar.module.scss";
 
 export default function Navbar() {
   const { menuData, scheduleData } = useMenuScheduleStore();
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-bottom content">
+    <nav
+      className={`navbar navbar-expand-lg navbar-light bg-light fixed-bottom content ${styles.navbarCustom}`}
+    >
       <div className="container-fluid">
         <span className="nav-item">
           <Link className="navbar-brand nav-link" href="/">

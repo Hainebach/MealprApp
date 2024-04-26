@@ -90,6 +90,7 @@ export default function MenuPage() {
           menuData={menuData}
           onEditClick={toggleEditMode}
           handleButtonClick={handleButtonClick}
+          className="bodyContent"
         />
       )}
     </Layout>
