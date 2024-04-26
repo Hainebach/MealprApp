@@ -14,7 +14,6 @@ export default function MenuDisplay({
       <h2>Suggested Menu:</h2>
       <ul className="list-unstyled">
         {menuData.map((line, index) => {
-          // Check if the line is a day name
           const isDayName = line.match(
             /(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)/i
           );

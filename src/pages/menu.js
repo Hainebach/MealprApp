@@ -44,12 +44,23 @@ export default function MenuPage() {
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
-    setEditedMenu(menuData);
+    if (!editMode) {
+      // If going to edit mode
+      setEditedMenu(menuData.join("\n"));
+    } else {
+      // If exiting edit mode
+      setMenuData(
+        editedMenu
+          .split("\n")
+          .map((item) => item.trim())
+          .filter((item) => item !== "")
+      );
+    }
   };
 
   const handleMenuEditSubmit = () => {
     const menuItems = editedMenu
-      .split("\n") // Assuming each item is on a new line; adjust as necessary
+      .split("\n")
       .map((item) => item.trim())
       .filter((item) => item !== "");
 
