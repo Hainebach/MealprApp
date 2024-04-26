@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "../../src/styles/UserInputForm.module.scss";
 
 export default function UserInputForm({ onMenuData }) {
   const [dietaryRestrictions, setDietaryRestrictions] = useState("none");
@@ -82,10 +83,21 @@ export default function UserInputForm({ onMenuData }) {
             What would you like to eat this week?
           </label>
           <br />
-          <textarea id="userInput" name="userInput" type="text" />
+          <textarea
+            id="userInput"
+            name="userInput"
+            type="text"
+            className="form-control"
+            style={{ height: "150px" }}
+            placeholder="Cookies for breakfast on Wednesday, donuts for Thursday dinner, and surprise me with the rest."
+          ></textarea>
           <br />
           <label htmlFor="dietaryChoices">dietery choices:</label>
-          <select id="dietaryChoices" name="dietaryChoices">
+          <select
+            id="dietaryChoices"
+            name="dietaryChoices"
+            className="form-select"
+          >
             <option value="vegetarian">vegetarian</option>
             <option value="vegan">vegan</option>
             <option value="pescatarian">pescatarian</option>
@@ -94,6 +106,7 @@ export default function UserInputForm({ onMenuData }) {
           <br />
           <label htmlFor="dietaryRestrictions">dietary restrictions:</label>
           <select
+            className="form-select"
             id="dietaryRestrictions"
             name="dietaryRestrictions"
             value={dietaryRestrictions}
@@ -115,7 +128,11 @@ export default function UserInputForm({ onMenuData }) {
           )}
           <br />
           <label htmlFor="godsRestrictions">god's restrictions:</label>
-          <select id="godsRestrictions" name="godsRestrictions">
+          <select
+            className="form-select"
+            id="godsRestrictions"
+            name="godsRestrictions"
+          >
             <option value="none">none</option>
             <option value="kosher">kosher</option>
             <option value="halal">halal</option>
