@@ -3,6 +3,7 @@ import Layout from "../../component/Layout/Layout";
 import MenuDisplay from "../../component/MenuDisplay/MenuDisplay";
 import useMenuScheduleStore from "../../store/useMenuScheduleStore";
 import React, { useState, useEffect } from "react";
+import styles from "../../src/styles/UserInputForm.module.scss";
 
 export default function MenuPage() {
   const router = useRouter();
@@ -77,13 +78,19 @@ export default function MenuPage() {
           ></iframe>
         </div>
       ) : editMode ? (
-        <div>
+        <div className="container-fluid">
           <textarea
             value={editedMenu}
             onChange={(e) => setEditedMenu(e.target.value)}
+            className="form-control textarea-edit"
+            style={{ height: "80vh", width: "100%" }}
           />
-          <button onClick={handleMenuEditSubmit}>Submit Edited Menu</button>
-          <button onClick={toggleEditMode}>Cancel</button>
+          <button className="btn btn-primary" onClick={handleMenuEditSubmit}>
+            Submit Edited Menu
+          </button>
+          <button className="btn btn-primary" onClick={toggleEditMode}>
+            Cancel
+          </button>
         </div>
       ) : (
         <MenuDisplay

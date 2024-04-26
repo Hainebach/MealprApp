@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../../src/styles/ScheduleDisplay.module.scss";
 
 export default function ScheduleDisplay({ scheduleData, error }) {
   if (!scheduleData) return <p>No schedule to display.</p>;

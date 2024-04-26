@@ -9,7 +9,7 @@ export default function UserInputForm({ onMenuData }) {
     event.preventDefault();
     setIsLoading(true);
     const formData = new FormData(event.target);
-    const userInput = formData.get("userInput");
+    const userInput = formData.get("userInput") || "anything";
     const dietaryChoices = formData.get("dietaryChoices");
     const godsRestrictions = formData.get("godsRestrictions");
     const customDietaryRestriction = formData.get("customDietaryRestriction");
@@ -66,14 +66,17 @@ export default function UserInputForm({ onMenuData }) {
           className="gif-container"
           style={{
             width: "100%",
-            height: "0",
-            paddingBottom: "56%",
+            height: "auto",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+
             position: "relative",
           }}
         >
           <iframe
             src="https://giphy.com/embed/9MIlfNXYBFC25L7QKT"
-            style={{ width: "100%", height: "100%", position: "absolute" }}
+            style={{ width: "100%", height: "100%", position: "relative" }}
             allowFullScreen
           ></iframe>
         </div>

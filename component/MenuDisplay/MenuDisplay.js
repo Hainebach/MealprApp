@@ -1,27 +1,38 @@
 import React from "react";
-
+import styles from "../../src/styles/MenuDisplay.module.scss";
 export default function MenuDisplay({
   menuData,
   handleButtonClick,
   onEditClick,
 }) {
   if (!menuData || !Array.isArray(menuData)) {
-    console.log("no available menu to display: ", menuData);
-    console.log(typeof menuData);
-    return;
-    <p>No menu to display.</p>;
+    return <p>No menu to display</p>; // Corrected the return statement
   }
 
   return (
-    <div>
+    <div className="container mt-4">
       <h2>Suggested Menu:</h2>
-      <ul>
-        {menuData.map((line, index) => (
-          <li key={index}>{line}</li>
-        ))}
+      <ul className="list-unstyled">
+        {menuData.map((line, index) => {
+          // Check if the line is a day name
+          const isDayName = line.match(
+            /(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)/i
+          );
+          return (
+            <li key={index} className={isDayName ? styles.dayName : ""}>
+              {line}
+            </li>
+          );
+        })}
       </ul>
-      <button onClick={handleButtonClick}>I like this menu</button>
-      <button onClick={onEditClick}>I like this but...</button>
+      <div className="d-flex justify-content-between mt-3">
+        <button className="btn btn-success" onClick={handleButtonClick}>
+          I like this menu
+        </button>
+        <button className="btn btn-warning" onClick={onEditClick}>
+          I like this but...
+        </button>
+      </div>
     </div>
   );
 }
