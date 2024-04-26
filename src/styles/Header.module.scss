@@ -1,0 +1,15 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #c3ddf7 !important;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.headerLink {
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+}

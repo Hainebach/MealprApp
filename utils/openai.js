@@ -26,7 +26,7 @@ export default async function generator(
           if a user asks something you think contradicts the restrictions find an alternative that might satisfy them. 
           don't repeat any item more than two consecutive days.
           format your answer for every day of the week like that: breakfast: content, lunch: content, dinner: content
-          starting monday. after the list tell a joke about the users ${choices}`,
+          starting monday. after the list tell a joke about the users ${choices}.`,
         },
         {
           role: "user",

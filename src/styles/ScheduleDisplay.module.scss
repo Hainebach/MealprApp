@@ -1,0 +1,15 @@
+.scheduleRow td {
+  background-color: rgb(255, 220, 220);
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.scheduleRow td:hover {
+  background-color: #e2e6ea;
+}
+
+.dayName {
+  font-weight: bold;
+}

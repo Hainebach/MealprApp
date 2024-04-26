@@ -8,6 +8,10 @@ const openai = new OpenAI({
 });
 
 export default async function scheduleGenerator(generatedMenu) {
+  console.log(
+    "in the function schedule generator generatedMenu: ",
+    generatedMenu
+  );
   try {
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
