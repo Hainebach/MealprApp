@@ -21,7 +21,7 @@ export default function Home() {
           Whether you’re aiming to maintain a specific diet, manage allergies,
           or just need quick and nutritious meals, we've got you covered.
         </p>
-        <p className="text-center">
+        <div className="text-center">
           Effortless Planning, Delicious Efficiency:
           <ul className="list-unstyled">
             <li>
@@ -41,7 +41,7 @@ export default function Home() {
               plans into a shopping list with one click.
             </li>
           </ul>
-        </p>
+        </div>
         <p className="text-center">
           Join MealPrep today and reclaim your time without sacrificing
           delicious, nourishing meals. Embrace a simpler, tastier week with just
