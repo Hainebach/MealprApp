@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "@/styles/globals.scss";
+import "@/styles/global.scss";
 import { Assistant } from "next/font/google";
 import styles from "../styles/Home.module.scss";
 

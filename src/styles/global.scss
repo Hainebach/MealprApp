@@ -1,0 +1,17 @@
+body,
+html {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: lightgray;
+}
+
+.largeFormContainer {
+  max-width: 1600px; // Adjust width as necessary
+  margin: 0 auto; // Centers the form in the page
+  padding: 20px; // Adds padding for better spacing
+}
+
+.largeInput {
+  width: 100%; // Makes input take full width of its container
+  margin-bottom: 1rem; // Adds bottom margin for spacing
+}
