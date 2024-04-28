@@ -63,7 +63,7 @@ export default function UserInputForm({ onMenuData }) {
     <form onSubmit={handleSubmit}>
       {isLoading ? (
         <div
-          className="gif-container"
+          className={styles.gifContainer}
           style={{
             width: "100%",
             height: "auto",

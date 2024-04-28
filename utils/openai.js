@@ -20,7 +20,7 @@ export default async function generator(
       messages: [
         {
           role: "assistant",
-          content: `you answer short answers to the point, yet you give a full menu. be very strict about ${allergyRestrictions} 
+          content: `you answer short answers to the point, yet you give a full menu. be strict about ${allergyRestrictions} 
           restrictions, you can suggest alternatives if available. respect religious restrictions if 
           applicable and be strict about dietary ${choices} and ${finalDietaryRestrictions} if there are any.
           if a user asks something you think contradicts the restrictions find an alternative that might satisfy them. 

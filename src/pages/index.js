@@ -5,10 +5,10 @@ export default function Home() {
   return (
     <Layout>
       <div className="container mt-5">
-        <h1 className="display-4 text-center mb-4">Welcome to MealprApp</h1>
-        <p className="lead text-center">
+        <h3 className="display-5 text-center mb-4">Welcome to MealprApp</h3>
+        <h1 className="lead text-center">
           Simplify Your Eating, Amplify Your Efficiency.
-        </p>
+        </h1>
         <div className="text-center mt-3 mb-5">
           <Link className="btn btn-primary btn-lg" href="/create-menu">
             Create Your Menu
