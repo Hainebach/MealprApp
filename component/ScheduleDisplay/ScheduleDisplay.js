@@ -1,13 +1,16 @@
 import React from "react";
 import styles from "../../src/styles/ScheduleDisplay.module.scss";
+
 export default function ScheduleDisplay({ scheduleData, error }) {
   if (!scheduleData) return <p>No schedule to display.</p>;
   if (error) return <p>{error}</p>;
 
   return (
     <div className="container mt-4">
-      <h2>Schedule:</h2>
-      <table className="table table-hover">
+      <h2 className="mb-3" style={{ fontSize: "2rem" }}>
+        Schedule:
+      </h2>
+      <table className={`table table-hover ${styles.scheduleTable}`}>
         <thead className="thead-dark">
           <tr>
             <th>Day</th>

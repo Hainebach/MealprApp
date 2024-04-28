@@ -63,7 +63,7 @@ export default function UserInputForm({ onMenuData }) {
     <form onSubmit={handleSubmit}>
       {isLoading ? (
         <div
-          className="gif-container"
+          className={styles.gifContainer}
           style={{
             width: "100%",
             height: "auto",
@@ -142,7 +142,9 @@ export default function UserInputForm({ onMenuData }) {
             <option value="hindu">hindu</option>
           </select>
           <br />
-          <button type="submit">Generate</button>
+          <button type="submit" className="btn btn-success">
+            Generate
+          </button>
         </>
       )}
     </form>

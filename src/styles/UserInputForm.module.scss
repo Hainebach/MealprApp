@@ -3,9 +3,17 @@
   padding: 10px;
   background-color: rgb(94, 141, 182) !important;
 }
-.gif-container {
+.gifContainer {
   width: 100%;
   height: 0;
   padding-bottom: 56%;
   position: relative;
+}
+
+.background {
+  background-image: url("/public/images/background-chalk.webp") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Ensure it covers at least the whole viewport height */
 }
