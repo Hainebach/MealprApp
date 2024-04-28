@@ -96,12 +96,14 @@ export default function MenuPage() {
             className="form-control textarea-edit"
             style={{ height: "80vh", width: "100%" }}
           />
-          <button className="btn btn-primary" onClick={handleMenuEditSubmit}>
-            Submit Edited Menu
-          </button>
-          <button className="btn btn-primary" onClick={toggleEditMode}>
-            Cancel
-          </button>
+          <div className="d-flex justify-content-between mt-3">
+            <button className="btn btn-primary" onClick={handleMenuEditSubmit}>
+              Submit Edited Menu
+            </button>
+            <button className="btn btn-warning" onClick={toggleEditMode}>
+              Cancel
+            </button>
+          </div>
         </div>
       ) : (
         <MenuDisplay

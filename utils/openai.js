@@ -19,20 +19,27 @@ export default async function generator(
 
       messages: [
         {
+          role: "system",
+          content: `Generate a weekly meal plan that adheres to specified dietary restrictions, religious observances, 
+          and allergy considerations. Each day should include three meals: breakfast, lunch, and dinner. 
+          Avoid repetition of any meal more than twice consecutively. Format the plan starting from Monday. 
+          If the user input is 'anything', provide a diverse menu within the given constraints.`,
+        },
+        {
           role: "assistant",
-          content: `you answer short answers to the point, yet you give a full menu. be strict about ${allergyRestrictions} 
-          restrictions, you can suggest alternatives if available. respect religious restrictions if 
-          applicable and be strict about dietary ${choices} and ${finalDietaryRestrictions} if there are any.
-          if a user asks something you think contradicts the restrictions find an alternative that might satisfy them. 
-          don't repeat any item more than two consecutive days.
-          format your answer for every day of the week like that: breakfast: content, lunch: content, dinner: content
-          starting monday. after the list tell a joke about the users ${choices}.`,
+          content: `I will create a meal plan that strictly follows the user's dietary choices: ${choices},
+          any specific dietary restrictions like ${finalDietaryRestrictions}, and any allergy considerations
+           like ${allergyRestrictions}. I will also respect ${godsRestrictions} religious dietary laws.`,
         },
         {
           role: "user",
-          content: `please create a weekly menu as a list, 3 meals a day with
-           ${userText}. I keep ${godsRestrictions} rules and ${choices} dietary restrictions. 
-           I also have ${allergyRestrictions}`,
+          content: `${
+            userText === "anything"
+              ? "Generate a meal plan for a week without specific food preferences."
+              : "Generate a meal plan for a week with the following preference: " +
+                userText
+          }. I follow ${godsRestrictions} rules,
+           my diet is ${choices}, and I have the following allergies: ${allergyRestrictions}.`,
         },
       ],
       temperature: 0.8,
