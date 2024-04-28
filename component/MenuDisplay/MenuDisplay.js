@@ -14,12 +14,14 @@ export default function MenuDisplay({
       <h2>Suggested Menu:</h2>
       <ul className="list-unstyled">
         {menuData.map((line, index) => {
-          const isDayName = line.match(
-            /(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)/i
-          );
+          const cleanLine = line.replace(/^- /, ""); // Removes leading dash and space if present
+          const isDayName =
+            /(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)/i.test(
+              cleanLine
+            );
           return (
             <li key={index} className={isDayName ? styles.dayName : ""}>
-              {line}
+              {cleanLine}
             </li>
           );
         })}
