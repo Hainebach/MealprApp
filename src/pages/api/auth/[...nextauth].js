@@ -22,10 +22,10 @@ export const authOptions = {
   },
   callbacks: {
     async signIn({ account, profile }) {
-      return true; // You can add additional checks here
+      return true;
     },
     async redirect({ url, baseUrl }) {
-      return baseUrl; // Or customize redirect after login
+      return baseUrl;
     },
     async jwt({ token, user, account }) {
       if (account) {
