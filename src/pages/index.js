@@ -1,7 +1,17 @@
 import Link from "next/link";
 import Layout from "../../component/Layout/Layout";
-import styles from "@/styles/Home.module.scss";
+import { signIn, useSession } from "next-auth/react";
+
 export default function Home() {
+  const { data: session } = useSession();
+
+  const handleCreateMenuClick = () => {
+    if (session) {
+      window.location.href = "/create-menu";
+    } else {
+      signIn();
+    }
+  };
   return (
     <Layout>
       <div className="container mt-5">
@@ -10,9 +20,12 @@ export default function Home() {
           Simplify Your Eating, Amplify Your Efficiency.
         </h1>
         <div className="text-center mt-3 mb-5">
-          <Link className="btn btn-primary btn-lg" href="/create-menu">
+          <button
+            className="btn btn-primary btn-lg"
+            onClick={handleCreateMenuClick}
+          >
             Create Your Menu
-          </Link>
+          </button>
         </div>
         <p className="lead text-center">
           At MealprApp, we understand how busy life can be. <br />

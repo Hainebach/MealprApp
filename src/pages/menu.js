@@ -4,6 +4,7 @@ import MenuDisplay from "../../component/MenuDisplay/MenuDisplay";
 import useMenuScheduleStore from "../../store/useMenuScheduleStore";
 import React, { useState, useEffect } from "react";
 import styles from "../../src/styles/UserInputForm.module.scss";
+import { useSession, signIn } from "next-auth/react";
 
 export default function MenuPage() {
   const router = useRouter();
@@ -11,6 +12,13 @@ export default function MenuPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [editedMenu, setEditedMenu] = useState(menuData);
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      signIn();
+    }
+  }, [status, router]);
 
   useEffect(() => {
     setEditedMenu(menuData);
@@ -70,7 +78,7 @@ export default function MenuPage() {
     handleButtonClick();
   };
 
-  return (
+  return session ? (
     <Layout>
       {isLoading ? (
         <div
@@ -114,5 +122,5 @@ export default function MenuPage() {
         />
       )}
     </Layout>
-  );
+  ) : null;
 }
