@@ -20,10 +20,10 @@ export default function Home() {
           We take the stress out of mealtime by providing personalized meal
           plans <br />
           tailored to your dietary preferences and hectic schedule.
-          <br /> Whether you’re aiming to maintain a specific diet, manage
+          <br /> Whether you&apos;re aiming to maintain a specific diet, manage
           allergies
-          <br /> or just simply need meal ideas on the spot -- we've got you
-          covered!
+          <br /> or just simply need meal ideas on the spot -- we&apos;ve got
+          you covered!
         </p>
         <div className="text-center">
           <strong>Effortless Planning, Delicious Efficiency:</strong>

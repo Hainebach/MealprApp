@@ -130,7 +130,7 @@ export default function UserInputForm({ onMenuData }) {
             />
           )}
           <br />
-          <label htmlFor="godsRestrictions">god's restrictions:</label>
+          <label htmlFor="godsRestrictions">god&apos;s restrictions:</label>
           <select
             className="form-select"
             id="godsRestrictions"
